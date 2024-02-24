@@ -1,0 +1,49 @@
+application-05:
+  visibility: public
+  repository_owner: cx-soral
+  repository_name: application-05
+  template_owner: cx-soral
+  template_name: gcp-application
+gcp-framework:
+  visibility: public
+  repository_owner: cx-soral
+  repository_name: gcp-framework
+  template_owner: cx-soral
+  template_name: gcp-template-python
+gcp-template-module:
+  visibility: public
+  is_template: true
+  repository_owner: cx-soral
+  repository_name: gcp-template-module
+  template_owner: cx-soral
+  template_name: gcp-template-python
+gcp-module:
+  visibility: public
+  repository_owner: cx-soral
+  repository_name: gcp-module
+  template_owner: cx-soral
+  template_name: gcp-template-module
+gcp-module-application:
+  visibility: public
+  repository_owner: cx-soral
+  repository_name: gcp-module-application
+  template_owner: cx-soral
+  template_name: gcp-template-module
+gcp-module-project:
+  visibility: public
+  repository_owner: cx-soral
+  repository_name: gcp-module-project
+  template_owner: cx-soral
+  template_name: gcp-template-module
+gcp-module-pypi:
+  visibility: public
+  repository_owner: cx-soral
+  repository_name: gcp-module-pypi
+  template_owner: cx-soral
+  template_name: gcp-template-module
+gcp-module-bigquery:
+  visibility: public
+  repository_owner: cx-soral
+  repository_name: gcp-module-bigquery
+  template_owner: cx-soral
+  template_name: gcp-template-module

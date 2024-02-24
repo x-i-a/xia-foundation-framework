@@ -1,0 +1,32 @@
+settings:
+  realm_name: soral-base
+  realm_project: soral-base
+  realm_region: eu
+  billing_account: 010054-67434E-D5BFF4
+  foundation_name: soral-app
+  project_prefix: soral-app-
+  pip_index_url: https://europe-west1-python.pkg.dev/soral-app-prd/pypi/simple
+environments:
+  dev:
+    match_branch: refs/heads/main
+  sit:
+    match_branch: refs/tags/.*
+  prd:
+    match_branch: refs/tags/.*
+modules:
+  gcp_module_table:
+    applications:
+      - application-05
+  gcp_module_dataset:
+    applications:
+      - application-05
+  gcp_module_pypi_gcp:
+    repository_region: europe-west1
+    applications:
+      - gcp-framework
+      - gcp-template-module
+      - gcp-module
+      - gcp-module-application
+      - gcp-module-project
+      - gcp-module-pypi
+      - gcp-module-bigquery

@@ -1,0 +1,28 @@
+gcp_module_project:
+  package: gcp-module-project
+  class: Project
+  events:
+    deploy:
+gcp_module:
+  package: gcp-module
+  class: Module
+gcp_module_application:
+  package: gcp-module-application
+  class: Application
+  events:
+    deploy:
+gcp_module_pypi_gcp:
+  package: gcp-module-pypi
+  class: PypiGcp
+  events:
+    activate:
+gcp_module_table:
+  package: gcp-module-bigquery
+  class: Table
+  events:
+    activate:
+gcp_module_dataset:
+  package: gcp-module-bigquery
+  class: Dataset
+  events:
+    activate:
