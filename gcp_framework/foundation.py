@@ -65,7 +65,8 @@ class Foundation(Framework):
         if "AccessDeniedException" not in r.stderr and "NotFound" not in r.stderr:
             print(f"Bucket {bucket_name} already exists")
         else:
-            create_bucket_cmd = f"gsutil mb -p {current_settings['realm_project']} gs://{bucket_name}/"
+            create_bucket_cmd = (f"gsutil mb -l {current_settings['realm_region']} "
+                                 f"-p {current_settings['realm_project']} gs://{bucket_name}/")
             r = subprocess.run(create_bucket_cmd, stdout=subprocess.PIPE, stderr=subprocess.PIPE, text=True, shell=True)
             if "ERROR" not in r.stderr:
                 print(f"Bucket {bucket_name} create successfully")
