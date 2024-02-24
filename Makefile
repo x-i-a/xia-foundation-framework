@@ -8,8 +8,7 @@ init:
 	sleep 5; \
 	. .venv/bin/activate; \
 	pip install PyYAML keyring; \
-    pip install keyrings.google-artifactregistry-auth; \
-    pip install gcp-framework --index-url=https://europe-west1-python.pkg.dev/soral-app-prd/pypi/simple/
+    pip install keyrings.google-artifactregistry-auth;
 
 bigbang: init
 	@if [ -z "$(realm_project)" ]; then \
