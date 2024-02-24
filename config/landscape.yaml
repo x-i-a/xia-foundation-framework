@@ -1,10 +1,10 @@
 settings:
-  realm_name: soral-base
-  realm_project: soral-base
+  realm_name: xia-technical
+  realm_project: xia-cosmos
   realm_region: eu
-  billing_account: 010054-67434E-D5BFF4
-  foundation_name: soral-app
-  project_prefix: soral-app-
+  billing_account: 017FA8-F813AE-187267
+  foundation_name: xia-framework
+  project_prefix: xia-framework-
   pip_index_url: https://europe-west1-python.pkg.dev/soral-app-prd/pypi/simple
 environments:
   dev:
@@ -14,19 +14,3 @@ environments:
   prd:
     match_branch: refs/tags/.*
 modules:
-  gcp_module_table:
-    applications:
-      - application-05
-  gcp_module_dataset:
-    applications:
-      - application-05
-  gcp_module_pypi_gcp:
-    repository_region: europe-west1
-    applications:
-      - gcp-framework
-      - gcp-template-module
-      - gcp-module
-      - gcp-module-application
-      - gcp-module-project
-      - gcp-module-pypi
-      - gcp-module-bigquery
