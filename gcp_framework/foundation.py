@@ -83,7 +83,7 @@ class Foundation(Framework):
         with open(self.landscape_yaml, 'r') as file:
             landscape_dict = yaml.safe_load(file) or {}
         current_settings = landscape_dict.get("settings", {})
-        bucket_name = current_settings["cosmos_name"] + "_" + current_settings["foundation_name"]
+        bucket_name = current_settings["realm_name"] + "_" + current_settings["foundation_name"]
         tf_init_cmd = f'terraform -chdir=iac/environments/{env} init -backend-config="bucket={bucket_name}"'
         subprocess.run(tf_init_cmd, shell=True)
 
