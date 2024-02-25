@@ -7,10 +7,11 @@ terraform {
 }
 
 locals {
+  project = yamldecode(file(var.project_file))
   landscape = yamldecode(file(var.landscape_file))
   applications = yamldecode(file(var.applications_file))
-  project_prefix = local.landscape["settings"]["project_prefix"]
-  billing_account = local.landscape["settings"]["billing_account"]
+  project_prefix = local.project["project_prefix"]
+  billing_account = local.project["billing_account"]
   environment_dict = local.landscape["environments"]
 }
 

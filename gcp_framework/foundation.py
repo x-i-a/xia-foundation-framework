@@ -60,14 +60,14 @@ class Foundation(Framework):
         if not foundation_name:
             raise ValueError("Foundation name must be provided")
         bucket_name = current_settings["realm_name"] + "_" + foundation_name
-        region_name = current_settings.get("realm_region", "eu")
+        foundation_region = current_settings.get("foundation_region", "eu")
         bucket_project = current_settings['cosmos_name']
         check_bucket_cmd = f"gsutil ls -b gs://{bucket_name}"
         r = subprocess.run(check_bucket_cmd, stdout=subprocess.PIPE, stderr=subprocess.PIPE, text=True, shell=True)
         if "AccessDeniedException" not in r.stderr and "NotFound" not in r.stderr:
             print(f"Bucket {bucket_name} already exists")
         else:
-            create_bucket_cmd = f"gsutil mb -l {region_name} -p {bucket_project} gs://{bucket_name}/"
+            create_bucket_cmd = f"gsutil mb -l {foundation_region} -p {bucket_project} gs://{bucket_name}/"
             r = subprocess.run(create_bucket_cmd, stdout=subprocess.PIPE, stderr=subprocess.PIPE, text=True, shell=True)
             if "ERROR" not in r.stderr:
                 print(f"Bucket {bucket_name} create successfully")
