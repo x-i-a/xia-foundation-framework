@@ -1,4 +1,4 @@
-from gcp_module_pypi.gcp import PypiGcp
+from xia_module_pypi.gcp import PypiGcp
 
 __all__ = [
     "PypiGcp"

@@ -8,3 +8,8 @@ gcp_module_application:
   class: Application
   events:
     deploy:
+gcp_module_pypi_gcp:
+  package: xia-module-pypi
+  class: PypiGcp
+  events:
+    activate:
