@@ -1,5 +1,5 @@
 import argparse
-from xia_framework import Foundation
+from xia_framework import Cosmos, Foundation
 
 
 def main():
@@ -33,9 +33,10 @@ def main():
     args = parser.parse_args()
 
     # Handle different commands
+    cosmos = Cosmos()
     foundation = Foundation()
     if args.command == 'bigbang':
-        foundation.bigbang(cosmos_name=args.realm_project, realm_name=args.realm_name)
+        cosmos.bigbang(cosmos_name=args.realm_project, realm_name=args.realm_name)
     if args.command == 'birth':
         foundation.birth(foundation_name=args.foundation_name)
     if args.command == 'prepare':
