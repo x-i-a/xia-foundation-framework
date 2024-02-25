@@ -114,7 +114,7 @@ resource "google_service_account" "github_provider_sa" {
   account_id   = "wip-${each.value["app_name"]}-sa"
   display_name = "Service Account for Identity Pool provider of ${each.value["app_name"]}"
 
-  depends_on = [google_project_service.cloud_resource_manager_api]
+  depends_on = [google_project_service.cloud_resource_manager_api, google_project_service.identity_and_access_manager_api]
 }
 
 resource "google_service_account_iam_binding" "workload_identity_binding" {
