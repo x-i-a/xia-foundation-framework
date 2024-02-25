@@ -5,7 +5,7 @@ all:
 
 init:
 	python3 -m venv .venv; \
-	sleep 5; \
+	until [ -f .venv/bin/python3 ]; do sleep 1; done;
 	. .venv/bin/activate; \
 	pip install PyYAML xia-framework
 
