@@ -4,7 +4,7 @@ gcp_module_project:
   events:
     deploy:
 gcp_module_application:
-  package: gcp-module-application
+  package: xia-module-application-gh
   class: Application
   events:
     deploy:
