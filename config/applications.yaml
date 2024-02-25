@@ -28,3 +28,9 @@ xia-module-application-gh:
   repository_name: xia-module-application-gh
   template_owner: x-i-a
   template_name: xia-template-application
+xia-module-gcp-bigquery:
+  visibility: public
+  repository_owner: x-i-a
+  repository_name: xia-module-gcp-bigquery
+  template_owner: x-i-a
+  template_name: xia-template-application
