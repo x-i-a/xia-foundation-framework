@@ -98,7 +98,7 @@ class Foundation(Framework):
     def birth(self, foundation_name: str):
         """"""
         self.create_backend(foundation_name)
-        self.terraform_init('prd')
+        # self.terraform_init('prd')
         # self.register_module("gcp-module-project", "Project")
         # self.register_module("gcp-module-application", "Application")
         # self.update_requirements()
