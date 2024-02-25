@@ -7,8 +7,7 @@ init:
 	python3 -m venv .venv; \
 	sleep 5; \
 	. .venv/bin/activate; \
-	pip install PyYAML keyring; \
-    pip install keyrings.google-artifactregistry-auth;
+	pip install PyYAML xia-framework
 
 bigbang: init
 	@if [ -z "$(realm_project)" ]; then \
