@@ -1,4 +1,4 @@
-from gcp_module import Module
+from xia_module import Module
 
 
 class Table(Module):

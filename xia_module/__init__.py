@@ -1,4 +1,4 @@
-from gcp_module.module import Module
+from xia_module.module import Module
 
 __all__ = [
     "Module"
