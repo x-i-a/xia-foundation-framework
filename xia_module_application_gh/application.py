@@ -2,4 +2,4 @@ from xia_module import Module
 
 
 class Application(Module):
-    module_name = "gcp-module-application"
+    module_name = "gh-module-application"

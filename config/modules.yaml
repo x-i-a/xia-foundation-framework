@@ -1,14 +1,14 @@
 xia_module:
   package: xia-module
   class: Module
+gh_module_application:
+  package: xia-module-application-gh
+  class: Application
+  events:
+    deploy:
 gcp_module_project:
   package: xia-module-gcp-project
   class: Project
-  events:
-    deploy:
-gcp_module_application:
-  package: xia-module-application-gh
-  class: Application
   events:
     deploy:
 gcp_module_pypi_gcp:
