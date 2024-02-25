@@ -4,7 +4,7 @@ import shutil
 import subprocess
 import importlib
 import yaml
-from gcp_framework.framework import Framework
+from xia_framework.framework import Framework
 
 
 class Foundation(Framework):
