@@ -8,9 +8,10 @@ terraform {
 
 locals {
   module_name = replace(substr(basename(path.module), 9, length(basename(path.module)) - 9), "-", "_")
+  project = yamldecode(file(var.project_file))
   landscape = yamldecode(file(var.landscape_file))
   applications = yamldecode(file(var.applications_file))
-  project_prefix = local.landscape["settings"]["project_prefix"]
+  project_prefix = local.project["project_prefix"]
   environment_dict = local.landscape["environments"]
   application_list = local.landscape["modules"][local.module_name]["applications"]
   repository_region = local.landscape["modules"][local.module_name]["repository_region"]
