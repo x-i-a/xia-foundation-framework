@@ -1,5 +1,5 @@
 gcp_module_project:
-  package: gcp-module-project
+  package: xia-module-gcp-project
   class: Project
   events:
     deploy:
