@@ -48,6 +48,14 @@ resource "google_project_service" "cloud_resource_manager_api" {
   disable_on_destroy = false
 }
 
+resource "google_project_service" "identity_and_access_manager_api" {
+  for_each = local.environment_dict
+
+  project = google_project.env_projects[each.key].project_id
+  service = "iam.googleapis.com"
+  disable_on_destroy = false
+}
+
 resource "google_storage_bucket" "tfstate-bucket" {
   for_each = { for s in local.all_pool_settings : "${s.app_name}-${s.env_name}" => s }
 

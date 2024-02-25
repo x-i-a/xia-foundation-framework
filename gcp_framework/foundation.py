@@ -26,6 +26,7 @@ class Foundation(Framework):
         TODO:
             * Activate Cloud Billing API during cosmos project creation
             * Activate Cloud Resource Manager API during cosmos project creation
+            * Activate Identity and Access Management during cosmos project creation
         """
 
         with open(self.landscape_yaml, 'r') as file:
