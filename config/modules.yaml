@@ -1,3 +1,6 @@
+xia_module:
+  package: xia-module
+  class: Module
 gcp_module_project:
   package: xia-module-gcp-project
   class: Project
