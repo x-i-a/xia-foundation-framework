@@ -10,3 +10,9 @@ xia-module:
   repository_name: xia-module
   template_owner: x-i-a
   template_name: xia-template-application
+xia-module-pypi:
+  visibility: public
+  repository_owner: x-i-a
+  repository_name: xia-module-pypi
+  template_owner: x-i-a
+  template_name: xia-template-application

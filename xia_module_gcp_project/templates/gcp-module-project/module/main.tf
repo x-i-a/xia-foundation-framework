@@ -14,11 +14,14 @@ locals {
   project_prefix = local.project["project_prefix"]
   billing_account = local.project["billing_account"]
   environment_dict = local.landscape["environments"]
+  activated_apps = lookup(lookup(local.landscape["modules"], "gcp_module_project", {}), "applications", [])
 }
 
 locals {
+  filtered_applications = { for app_name, app in local.applications : app_name => app if contains(local.activated_apps, app_name) }
+
   all_pool_settings = toset(flatten([
-    for app_name, app in local.applications : [
+    for app_name, app in filtered_applications : [
       for env_name, env in local.environment_dict : {
         app_name          = app_name
         env_name          = env_name
