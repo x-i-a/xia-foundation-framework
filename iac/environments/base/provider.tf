@@ -10,4 +10,6 @@ provider "google" {}
 
 provider "google-beta" {}
 
-provider "github" {}
+provider "github" {
+  owner = lookup(yamldecode(file(var.landscape_file)), "github_owner", null)
+}
