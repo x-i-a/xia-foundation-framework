@@ -46,7 +46,7 @@ resource "google_storage_bucket" "tfstate-bucket" {
 
   project       = local.landscape["settings"]["cosmos_name"]
   name          = "${local.landscape["settings"]["realm_name"]}_${each.value["app_name"]}_${each.value["env_name"]}"
-  location      = local.landscape["settings"]["realm_region"]
+  location      = local.landscape["settings"]["foundation_region"]
   force_destroy = true
 }
 
