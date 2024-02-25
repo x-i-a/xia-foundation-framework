@@ -11,7 +11,7 @@ gcp_module_project:
   class: Project
   events:
     deploy:
-gcp_module_pypi_gcp:
+gcp_module_pypi:
   package: xia-module-pypi
   class: PypiGcp
   events:

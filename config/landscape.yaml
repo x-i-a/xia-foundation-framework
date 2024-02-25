@@ -13,7 +13,7 @@ environments:
   prd:
     match_branch: refs/tags/.*
 modules:
-  gcp_module_pypi_gcp:
+  gcp_module_pypi:
     repository_region: europe-west1
     applications:
       - xia-framework
