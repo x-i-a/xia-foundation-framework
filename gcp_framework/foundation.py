@@ -21,7 +21,13 @@ class Foundation(Framework):
         self.package_pattern = re.compile(r'^[a-zA-Z0-9_-]+$')
 
     def bigbang(self, cosmos_name: str, realm_name: str = None):
-        """Create the realm administration project"""
+        """Create the realm administration project
+
+        TODO:
+            * Activate Cloud Billing API during cosmos project creation
+            * Activate Cloud Resource Manager API during cosmos project creation
+        """
+
         with open(self.landscape_yaml, 'r') as file:
             landscape_dict = yaml.safe_load(file) or {}
         current_settings = landscape_dict.get("settings", {})

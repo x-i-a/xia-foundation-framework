@@ -40,6 +40,13 @@ resource "google_project" "env_projects" {
   billing_account = local.billing_account
 }
 
+resource "google_project_service" "artifact_registry_api" {
+  for_each = local.environment_dict
+
+  project = "${local.project_prefix}${each.key}"
+  service = "cloudresourcemanager.googleapis.com"
+  disable_on_destroy = false
+}
 
 resource "google_storage_bucket" "tfstate-bucket" {
   for_each = { for s in local.all_pool_settings : "${s.app_name}-${s.env_name}" => s }
