@@ -132,3 +132,40 @@ resource "google_storage_bucket_iam_member" "tfstate_bucket_assign" {
   role   = "roles/storage.admin"
   member = "serviceAccount:${google_service_account.github_provider_sa[each.key].email}"
 }
+
+
+resource "github_actions_environment_variable" "action_var_project_id" {
+  for_each = { for s in local.all_pool_settings : "${s.app_name}-${s.env_name}" => s }
+
+  repository       = each.value["repository_name"]
+  environment      = each.value["env_name"]
+  variable_name    = "PROJECT_ID"
+  value            = each.value["project_id"]
+}
+
+resource "github_actions_environment_variable" "action_var_wip_name" {
+  for_each = { for s in local.all_pool_settings : "${s.app_name}-${s.env_name}" => s }
+
+  repository       = each.value["repository_name"]
+  environment      = each.value["env_name"]
+  variable_name    = "SECRET_WIP_NAME"
+  value            = google_iam_workload_identity_pool_provider.github_provider[each.key].name
+}
+
+resource "github_actions_environment_variable" "action_var_sa_email" {
+  for_each = { for s in local.all_pool_settings : "${s.app_name}-${s.env_name}" => s }
+
+  repository       = each.value["repository_name"]
+  environment      = each.value["env_name"]
+  variable_name    = "PROVIDER_SA_EMAIL"
+  value            = google_service_account.github_provider_sa[each.key].email
+}
+
+resource "github_actions_environment_variable" "action_var_tf_bucket" {
+  for_each = { for s in local.all_pool_settings : "${s.app_name}-${s.env_name}" => s }
+
+  repository       = each.value["repository_name"]
+  environment      = each.value["env_name"]
+  variable_name    = "TF_BUCKET_NAME"
+  value            = google_storage_bucket.tfstate-bucket[each.key].id
+}
