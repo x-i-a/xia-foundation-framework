@@ -24,3 +24,13 @@ gcp_module:
   class: PypiGcp
   events:
     activate:
+gcp_module_dataset:
+  package: xia-module-gcp-bigquery
+  class: Dataset
+  events:
+    activate:
+gcp_module_table:
+  package: xia-module-gcp-bigquery
+  class: Table
+  events:
+    activate:
