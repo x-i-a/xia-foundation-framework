@@ -9,7 +9,6 @@ terraform {
 locals {
   landscape = yamldecode(file(var.landscape_file))
   applications = yamldecode(file(var.applications_file))
-  project_prefix = local.landscape["settings"]["project_prefix"]
   environment_dict = local.landscape["environments"]
 }
 
@@ -21,7 +20,6 @@ locals {
         env_name          = env_name
         repository_owner  = app["repository_owner"]
         repository_name   = app["repository_name"]
-        project_id        = "${local.project_prefix}${env_name}"
         match_branch      = env["match_branch"]
       }
     ]
