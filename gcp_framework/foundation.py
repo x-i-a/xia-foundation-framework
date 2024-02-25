@@ -20,32 +20,32 @@ class Foundation(Framework):
         self.requirements_txt = os.path.sep.join([self.config_dir, "requirements.txt"])
         self.package_pattern = re.compile(r'^[a-zA-Z0-9_-]+$')
 
-    def bigbang(self, realm_project: str, realm_name: str = None):
+    def bigbang(self, cosmos_name: str, realm_name: str = None):
         """Create the realm administration project"""
         with open(self.landscape_yaml, 'r') as file:
             landscape_dict = yaml.safe_load(file) or {}
         current_settings = landscape_dict.get("settings", {})
-        current_realm_project = current_settings.get("realm_project", "")
-        if not realm_project:
+        current_cosmos_name = current_settings.get("cosmos_name", "")
+        if not cosmos_name:
             raise ValueError("Realm project must be provided")
-        if current_realm_project and current_realm_project != realm_project:
+        if current_cosmos_name and current_cosmos_name != cosmos_name:
             raise ValueError("Realm project doesn't match configured landscape.yaml")
-        realm_name = realm_project if not realm_name else realm_name
+        realm_name = cosmos_name if not realm_name else realm_name
         get_billing_cmd = f"gcloud billing accounts list --filter='open=true' --format='value(ACCOUNT_ID)' --limit=1"
         r = subprocess.run(get_billing_cmd, stdout=subprocess.PIPE, stderr=subprocess.PIPE, text=True, shell=True)
         current_settings["billing_account"] = r.stdout if "ERROR" not in r.stderr else None
         print(current_settings["billing_account"])
-        check_project_cmd = f"gcloud projects list --filter='{realm_project}' --format='value(projectId)'"
+        check_project_cmd = f"gcloud projects list --filter='{cosmos_name}' --format='value(projectId)'"
         r = subprocess.run(check_project_cmd, stdout=subprocess.PIPE, stderr=subprocess.PIPE, text=True, shell=True)
-        if realm_project in r.stdout:
-            print(f"Realm Project {realm_project} already exists")
+        if cosmos_name in r.stdout:
+            print(f"Realm Project {cosmos_name} already exists")
         else:
-            create_proj_cmd = f"gcloud projects create {realm_project} --name='{realm_name}'"
+            create_proj_cmd = f"gcloud projects create {cosmos_name} --name='{realm_name}'"
             r = subprocess.run(create_proj_cmd, stdout=subprocess.PIPE, stderr=subprocess.PIPE, text=True, shell=True)
             if "ERROR" not in r.stderr:
-                print(f"Realm Project {realm_project} create successfully")
+                print(f"Realm Project {cosmos_name} create successfully")
                 current_settings["realm_name"] = realm_name
-                current_settings["realm_project"] = realm_project
+                current_settings["cosmos_name"] = cosmos_name
                 with open(self.landscape_yaml, 'w') as file:
                     yaml.dump(landscape_dict, file, default_flow_style=False, sort_keys=False)
             else:
@@ -55,13 +55,13 @@ class Foundation(Framework):
         with open(self.landscape_yaml, 'r') as file:
             landscape_dict = yaml.safe_load(file) or {}
         current_settings = landscape_dict.get("settings", {})
-        if not current_settings.get("realm_project", ""):
-            raise ValueError("Realm project must be defined before")
+        if not current_settings.get("cosmos_name", ""):
+            raise ValueError("Cosmos Name must be defined")
         if not foundation_name:
             raise ValueError("Foundation name must be provided")
-        bucket_name = current_settings["realm_project"] + "_" + foundation_name
+        bucket_name = current_settings["realm_name"] + "_" + foundation_name
         region_name = current_settings.get("realm_region", "eu")
-        bucket_project = current_settings['realm_project']
+        bucket_project = current_settings['cosmos_name']
         check_bucket_cmd = f"gsutil ls -b gs://{bucket_name}"
         r = subprocess.run(check_bucket_cmd, stdout=subprocess.PIPE, stderr=subprocess.PIPE, text=True, shell=True)
         if "AccessDeniedException" not in r.stderr and "NotFound" not in r.stderr:
@@ -83,7 +83,7 @@ class Foundation(Framework):
         with open(self.landscape_yaml, 'r') as file:
             landscape_dict = yaml.safe_load(file) or {}
         current_settings = landscape_dict.get("settings", {})
-        bucket_name = current_settings["realm_project"] + "_" + current_settings["foundation_name"]
+        bucket_name = current_settings["cosmos_name"] + "_" + current_settings["foundation_name"]
         tf_init_cmd = f'terraform -chdir=iac/environments/{env} init -backend-config="bucket={bucket_name}"'
         subprocess.run(tf_init_cmd, shell=True)
 

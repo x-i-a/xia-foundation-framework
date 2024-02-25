@@ -35,7 +35,7 @@ def main():
     # Handle different commands
     foundation = Foundation()
     if args.command == 'bigbang':
-        foundation.bigbang(realm_project=args.realm_project, realm_name=args.realm_name)
+        foundation.bigbang(cosmos_name=args.realm_project, realm_name=args.realm_name)
     if args.command == 'birth':
         foundation.birth(foundation_name=args.foundation_name)
     if args.command == 'prepare':

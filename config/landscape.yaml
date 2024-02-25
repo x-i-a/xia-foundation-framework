@@ -1,6 +1,6 @@
 settings:
-  realm_name: xia-technical
-  realm_project: xia-cosmos
+  cosmos_name: xia-cosmos
+  realm_name: xia-governance
   realm_region: eu
   billing_account: 017FA8-F813AE-187267
   foundation_name: xia-framework
