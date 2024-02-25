@@ -10,6 +10,7 @@ locals {
   project = yamldecode(file(var.project_file))
   landscape = yamldecode(file(var.landscape_file))
   applications = yamldecode(file(var.applications_file))
+  folder_id = lookup(local.project, "folder_id", null)
   project_prefix = local.project["project_prefix"]
   billing_account = local.project["billing_account"]
   environment_dict = local.landscape["environments"]
@@ -35,6 +36,7 @@ resource "google_project" "env_projects" {
 
   name = "${local.project_prefix}${each.key}"
   project_id = "${local.project_prefix}${each.key}"
+  folder_id = local.folder_id
   billing_account = local.billing_account
 }
 
