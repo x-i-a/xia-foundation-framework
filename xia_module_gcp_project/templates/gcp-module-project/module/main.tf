@@ -40,7 +40,7 @@ resource "google_project" "env_projects" {
   billing_account = local.billing_account
 }
 
-resource "google_project_service" "artifact_registry_api" {
+resource "google_project_service" "cloud_resource_manager_api" {
   for_each = local.environment_dict
 
   project = "${local.project_prefix}${each.key}"
@@ -69,6 +69,8 @@ resource "google_iam_workload_identity_pool" "github_pool" {
 
   # Make sure the pool is in a state to be used
   disabled = false
+
+  depends_on = [google_project_service.cloud_resource_manager_api]
 }
 
 resource "google_iam_workload_identity_pool_provider" "github_provider" {
@@ -103,6 +105,8 @@ resource "google_service_account" "github_provider_sa" {
   project      = google_project.env_projects[each.value["env_name"]].id
   account_id   = "wip-${each.value["app_name"]}-sa"
   display_name = "Service Account for Identity Pool provider of ${each.value["app_name"]}"
+
+  depends_on = [google_project_service.cloud_resource_manager_api]
 }
 
 resource "google_service_account_iam_binding" "workload_identity_binding" {
