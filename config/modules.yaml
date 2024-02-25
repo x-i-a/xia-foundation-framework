@@ -16,3 +16,8 @@ gcp_module_pypi:
   class: PypiGcp
   events:
     activate:
+gcp_module:
+  package: xia-module-pypi
+  class: PypiGcp
+  events:
+    activate:
