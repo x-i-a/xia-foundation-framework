@@ -1,5 +1,5 @@
-module "activate_gcp_module_pypi_gcp" {
-  source = "../../modules/activate-gcp-module-pypi-gcp"
+module "activate_gcp_module_pypi" {
+  source = "../../modules/activate-gcp-module-pypi"
 
   landscape_file = var.landscape_file
   applications_file = var.applications_file
