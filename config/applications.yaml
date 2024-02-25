@@ -1,5 +1,5 @@
 xia-module:
-  visibility: public
+  visibility: private
   repository_owner: x-i-a
   repository_name: xia-module
   template_owner: x-i-a
