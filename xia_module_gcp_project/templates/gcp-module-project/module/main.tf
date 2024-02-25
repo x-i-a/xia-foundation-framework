@@ -43,7 +43,7 @@ resource "google_project" "env_projects" {
 resource "google_project_service" "cloud_resource_manager_api" {
   for_each = local.environment_dict
 
-  project = google_project.env_projects[each.key].id
+  project = google_project.env_projects[each.key].project_id
   service = "cloudresourcemanager.googleapis.com"
   disable_on_destroy = false
 }
@@ -61,7 +61,7 @@ resource "google_iam_workload_identity_pool" "github_pool" {
   for_each = { for s in local.all_pool_settings : "${s.app_name}-${s.env_name}" => s }
 
   workload_identity_pool_id = "gh-${each.value["repository_name"]}"
-  project  = google_project.env_projects[each.value["env_name"]].id
+  project  = google_project.env_projects[each.value["env_name"]].project_id
 
   # Workload Identity Pool configuration
   display_name = "gh-${each.value["repository_name"]}"
@@ -102,7 +102,7 @@ resource "google_iam_workload_identity_pool_provider" "github_provider" {
 
 resource "google_service_account" "github_provider_sa" {
   for_each = { for s in local.all_pool_settings : "${s.app_name}-${s.env_name}" => s }
-  project      = google_project.env_projects[each.value["env_name"]].id
+  project      = google_project.env_projects[each.value["env_name"]].project_id
   account_id   = "wip-${each.value["app_name"]}-sa"
   display_name = "Service Account for Identity Pool provider of ${each.value["app_name"]}"
 
