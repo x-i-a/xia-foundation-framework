@@ -13,7 +13,6 @@ class Foundation(Framework):
         self.module_dir = os.path.sep.join(["iac", "modules"])
         self.env_dir = os.path.sep.join(["iac", "environments"])
         self.application_yaml = os.path.sep.join([self.config_dir, "applications.yaml"])
-        self.module_yaml = os.path.sep.join([self.config_dir, "modules.yaml"])
 
         # Temporary files
         self.requirements_txt = os.path.sep.join([self.config_dir, "requirements.txt"])
@@ -87,24 +86,9 @@ class Foundation(Framework):
             yaml.dump(module_dict, file, default_flow_style=False, sort_keys=False)
 
     def update_requirements(self):
-        with open(self.module_yaml, 'r') as file:
-            module_dict = yaml.safe_load(file) or {}
-        all_packages = [module_config["package"] for module_name, module_config in module_dict.items()]
-        all_packages = list(set(all_packages))
-        package_list = []
+        needed_packages = self.get_needed_packages()
 
-        for package_name in all_packages:
-            module_name = package_name.replace("-", "_")
-            if os.path.exists(f"./{module_name}"):
-                print(f"Found local package {package_name}: ./{module_name}")
-            elif os.path.exists(f"../{package_name}"):
-                print(f"Found local package {package_name}: ../{package_name}")
-            else:
-                package_list.append(package_name)
-                print(f"{package_name} added to requirements")
-
-
-        requirements_content = "\n".join(package_list)
+        requirements_content = "\n".join(needed_packages.values())
         with open(self.requirements_txt, 'w') as file:
             file.write(requirements_content)
 
