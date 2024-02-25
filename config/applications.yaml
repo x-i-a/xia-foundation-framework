@@ -16,3 +16,15 @@ xia-module-pypi:
   repository_name: xia-module-pypi
   template_owner: x-i-a
   template_name: xia-template-application
+xia-module-gcp-project:
+  visibility: public
+  repository_owner: x-i-a
+  repository_name: xia-module-gcp-project
+  template_owner: x-i-a
+  template_name: xia-template-application
+xia-module-application-gh:
+  visibility: public
+  repository_owner: x-i-a
+  repository_name: xia-module-application-gh
+  template_owner: x-i-a
+  template_name: xia-template-application
