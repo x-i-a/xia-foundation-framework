@@ -1,10 +1,11 @@
 locals {
+  project = yamldecode(file(var.project_file))
   module_name = replace(substr(basename(path.module), 9, length(basename(path.module)) - 9), "-", "_")
   landscape = yamldecode(file(var.landscape_file))
   applications = yamldecode(file(var.applications_file))
-  project_prefix = local.landscape["settings"]["project_prefix"]
+  project_prefix = local.project["project_prefix"]
   environment_dict = local.landscape["environments"]
-  application_list = local.landscape["modules"][local.module_name]["applications"]
+  application_list = lookup(lookup(local.landscape["modules"], local.module_name, {}), "applications", [])
 }
 
 locals {

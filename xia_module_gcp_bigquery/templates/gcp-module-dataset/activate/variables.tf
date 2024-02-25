@@ -10,6 +10,12 @@ variable "applications_file" {
   default = "../../../config/applications.yaml"
 }
 
+variable "project_file" {
+  type = string
+  description = "Project config file"
+  default = "../../../config/gcp-project.yaml"
+}
+
 variable "modules_file" {
   type = string
   description = "Module config file"
