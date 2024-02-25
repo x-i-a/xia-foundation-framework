@@ -19,9 +19,9 @@ gcp_module_pypi:
   class: PypiGcp
   events:
     activate:
-gcp_module:
+module_pypi:
   package: xia-module-pypi
-  class: PypiGcp
+  class: Pypi
   events:
     activate:
 gcp_module_dataset:
