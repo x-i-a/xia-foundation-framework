@@ -44,7 +44,7 @@ resource "google_project" "env_projects" {
 resource "google_storage_bucket" "tfstate-bucket" {
   for_each = { for s in local.all_pool_settings : "${s.app_name}-${s.env_name}" => s }
 
-  project       = local.landscape["settings"]["realm_project"]
+  project       = local.landscape["settings"]["cosmos_name"]
   name          = "${local.landscape["settings"]["realm_name"]}_${each.value["app_name"]}_${each.value["env_name"]}"
   location      = local.landscape["settings"]["realm_region"]
   force_destroy = true
