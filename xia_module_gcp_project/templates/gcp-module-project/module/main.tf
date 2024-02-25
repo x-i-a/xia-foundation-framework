@@ -43,7 +43,7 @@ resource "google_project" "env_projects" {
 resource "google_project_service" "cloud_resource_manager_api" {
   for_each = local.environment_dict
 
-  project = "${local.project_prefix}${each.key}"
+  project = google_project.env_projects[each.key].id
   service = "cloudresourcemanager.googleapis.com"
   disable_on_destroy = false
 }
