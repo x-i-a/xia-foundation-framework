@@ -1,5 +1,5 @@
 import argparse
-from gcp_framework import Foundation
+from xia_framework import Foundation
 
 
 def main():
