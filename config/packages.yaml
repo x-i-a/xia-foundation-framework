@@ -1,0 +1,8 @@
+xia-module:
+  git_https: github.com/x-i-a/xia-module
+xia-module-application-gh:
+  git_https: github.com/x-i-a/xia-module-application-gh
+xia-module-gcp-project:
+  git_https: github.com/x-i-a/xia-module-gcp-project
+xia-module-pypi:
+xia-module-gcp-bigquery:
