@@ -12,6 +12,7 @@ environments:
     match_branch: refs/tags/.*
   prd:
     match_branch: refs/tags/.*
+    match_event: release
 modules:
   gcp_module_pypi:
     repository_region: europe-west1
