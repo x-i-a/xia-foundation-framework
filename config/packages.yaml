@@ -1,8 +1,15 @@
-xia-module:
-  git_https: github.com/x-i-a/xia-module
-xia-module-application-gh:
-  git_https: github.com/x-i-a/xia-module-application-gh
-xia-module-gcp-project:
-  git_https: github.com/x-i-a/xia-module-gcp-project
-xia-module-pypi:
-xia-module-gcp-bigquery:
+repositories:
+  default:
+  develop:
+    git_https: github.com/x-i-a
+
+
+packages:
+  xia-module:
+    repository: develop
+  xia-module-application-gh:
+    repository: develop
+  xia-module-gcp-project:
+    repository: develop
+  xia-module-pypi:
+  xia-module-gcp-bigquery:
