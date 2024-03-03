@@ -9,7 +9,7 @@ init:
 	until [ -f .venv/bin/activate ]; do sleep 1; done;
 	. .venv/bin/activate; \
 	pip install PyYAML keyring setuptools wheel; \
-	pip install git+https://https://github.com/x-i-a/xia-framework; \
+	pip install git+https://github.com/x-i-a/xia-framework; \
     pip install keyrings.google-artifactregistry-auth; \
 
 bigbang: init
