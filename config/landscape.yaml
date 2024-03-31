@@ -19,3 +19,6 @@ modules:
     applications:
       - xia-framework
       - xia-module
+  gcp_module_dataset:
+    applications:
+      - xia-demo-framework-01
