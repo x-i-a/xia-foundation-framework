@@ -13,3 +13,4 @@ packages:
     repository: develop
   xia-module-pypi:
   xia-module-gcp-bigquery:
+    repository: develop
