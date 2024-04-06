@@ -14,11 +14,11 @@ environments:
     match_branch: refs/tags/.*
     match_event: release
 modules:
-  gcp_module_pypi:
+  gcp-module-pypi:
     repository_region: europe-west1
     applications:
       - xia-framework
       - xia-module
-  gcp_module_dataset:
+  gcp-module-dataset:
     applications:
       - xia-demo-framework-01

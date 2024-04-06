@@ -1,32 +1,32 @@
-xia_module:
+xia-module:
   package: xia-module
   class: Module
-gh_module_application:
+gh-module-application:
   package: xia-module-application-gh
   class: Application
   events:
     deploy:
-gcp_module_project:
+gcp-module-project:
   package: xia-module-gcp-project
   class: Project
   events:
     deploy:
-gcp_module_pypi:
+gcp-module-pypi:
   package: xia-module-pypi
   class: PypiGcp
   events:
     activate:
-module_pypi:
+module-pypi:
   package: xia-module-pypi
   class: Pypi
   events:
     activate:
-gcp_module_dataset:
+gcp-module-dataset:
   package: xia-module-gcp-bigquery
   class: Dataset
   events:
     activate:
-gcp_module_table:
+gcp-module-table:
   package: xia-module-gcp-bigquery
   class: Table
   events:
