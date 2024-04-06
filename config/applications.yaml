@@ -40,3 +40,9 @@ xia-demo-framework-01:
   repository_name: xia-demo-framework-01
   template_owner: x-i-a
   template_name: xia-template-application
+action-gcs-terraform-apply:
+  visibility: public
+  repository_owner: x-i-a
+  repository_name: action-gcs-terraform-apply
+  template_owner: x-i-a
+  template_name: xia-template-action
