@@ -22,3 +22,4 @@ modules:
   gcp-module-dataset:
     applications:
       - xia-demo-framework-01
+      - xia-demo-framework-02
