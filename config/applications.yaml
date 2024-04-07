@@ -16,6 +16,12 @@ xia-module-pypi:
   repository_name: xia-module-pypi
   template_owner: x-i-a
   template_name: xia-template-application
+xia-module-terraform-gcs:
+  visibility: public
+  repository_owner: x-i-a
+  repository_name: xia-module-terraform-gcs
+  template_owner: x-i-a
+  template_name: xia-template-application
 xia-module-gcp-project:
   visibility: public
   repository_owner: x-i-a
@@ -38,12 +44,6 @@ xia-demo-framework-01:
   visibility: public
   repository_owner: x-i-a
   repository_name: xia-demo-framework-01
-  template_owner: x-i-a
-  template_name: xia-template-application
-xia-demo-framework-02:
-  visibility: public
-  repository_owner: x-i-a
-  repository_name: xia-demo-framework-02
   template_owner: x-i-a
   template_name: xia-template-application
 action-gcs-terraform-apply:
