@@ -11,6 +11,11 @@ gcp-module-project:
   class: Project
   events:
     deploy:
+module-state-gcs:
+  package: xia-module-terraform-gcs
+  class: GcsState
+  events:
+    activate:
 gcp-module-pypi:
   package: xia-module-pypi
   class: PypiGcp

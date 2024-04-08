@@ -11,6 +11,8 @@ packages:
     repository: develop
   xia-module-gcp-project:
     repository: develop
+  xia-module-terraform-gcs:
+    repository: develop
   xia-module-pypi:
     repository: develop
   xia-module-gcp-bigquery:
