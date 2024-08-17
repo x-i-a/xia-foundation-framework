@@ -1,6 +1,6 @@
 settings:
   cosmos_name: xia-cosmos
-  realm_name: xia-governance
+  realm_name: protocol
   foundation_name: xia-framework
   foundation_region: eu
   github_owner: x-i-a
