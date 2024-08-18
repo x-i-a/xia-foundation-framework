@@ -6,6 +6,7 @@ locals {
 }
 
 locals {
+  # Get Activation App list for all Modules
   _dependency_flat = concat(
     flatten([
       for k, v in local.modules : [
