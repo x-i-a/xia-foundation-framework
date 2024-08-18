@@ -1,3 +1,3 @@
 output "dependency" {
-  value = local._dependency_flat
+  value = local._dependency_grouped
 }

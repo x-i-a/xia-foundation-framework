@@ -15,7 +15,7 @@ locals {
     ]
   ])
 
-  _dependency_grouped = { for item in local._dependency_flat : tostring(item.module) => item.apps... }
+  _dependency_grouped = { for item in local._dependency_flat : item.module => item.apps... }
 
 }
 
