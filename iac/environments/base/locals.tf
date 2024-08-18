@@ -9,11 +9,13 @@ locals {
   _dependency_flat = flatten([
     for k, v in local.modules : [
       for p in lookup(v, "depends_on", []) : {
-        app    = lookup(v, "activate_scope", [])
+        apps    = lookup(v, "activate_scope", [])
         module = p
-      } if length(lookup(v, "depends_on", [])) > 0
+      } if length(lookup(v, "activate_scope", [])) > 0
     ]
   ])
+
+  _dependency_grouped = { for item in local._dependency_flat : tostring(item.module) => item.apps... }
 
 }
 
