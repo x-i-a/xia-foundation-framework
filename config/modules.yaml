@@ -32,8 +32,6 @@ module-pypi:
 gcp-module-dataset:
   package: xia-module-gcp-bigquery
   class: Dataset
-  depends_on:
-    - gcp-module-project
   activate_scope:
     - xia-demo-framework-01
   events:
@@ -42,6 +40,6 @@ gcp-module-table:
   package: xia-module-gcp-bigquery
   class: Table
   depends_on:
-    - "gcp-module-project"
+    - gcp-module-project
   events:
     activate:
