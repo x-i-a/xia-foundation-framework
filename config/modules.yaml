@@ -26,6 +26,7 @@ gcp-module-pypi:
     - xia-module
   events:
     activate:
+  repository_region: europe-west1
 module-pypi:
   package: xia-module-pypi
   class: Pypi
