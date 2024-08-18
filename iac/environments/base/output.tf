@@ -1,3 +1,3 @@
-output "modules" {
-  value = local.modules
+output "app_env_config" {
+  value = local.app_env_config
 }
