@@ -11,7 +11,7 @@ locals {
       for p in lookup(v, "depends_on", []) : {
         app    = lookup(v, "activate_scope", [])
         module = p
-      }
+      } if lookup(v, "depends_on", [])
     ]
   ])
 
