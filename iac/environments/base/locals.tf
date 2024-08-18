@@ -1,19 +1,20 @@
 locals {
   landscape = yamldecode(file(var.landscape_file))
   applications = yamldecode(file(var.applications_file))
-  _modules = yamldecode(file(var.modules_file))
+  modules = yamldecode(file(var.modules_file))
   environment_dict = lookup(local.landscape, "environments", {})
 }
 
 locals {
   _dependency_flat = flatten([
-    for k, v in local._modules : [
-      for v in lookup(v, "depends_on", []) : {
-        key   = k
-        value = v
+    for k, v in local.modules : [
+      for p in lookup(v, "depends_on", []) : {
+        app    = lookup(v, "activate_scope", [])
+        module = p
       }
     ]
   ])
+
 }
 
 locals {
