@@ -1,3 +1,3 @@
-output "project_prefix" {
-  value = local.project_prefix
+output "modules" {
+  value = local.modules
 }
