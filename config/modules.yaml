@@ -19,6 +19,9 @@ module-state-gcs:
 gcp-module-pypi:
   package: xia-module-pypi
   class: PypiGcp
+  activate_scope:
+    - xia-framework
+    - xia-module
   events:
     activate:
 module-pypi:
@@ -29,10 +32,16 @@ module-pypi:
 gcp-module-dataset:
   package: xia-module-gcp-bigquery
   class: Dataset
+  depends_on:
+    - gcp-module-project
+  activate_scope:
+    - xia-demo-framework-01
   events:
     activate:
 gcp-module-table:
   package: xia-module-gcp-bigquery
   class: Table
+  depends_on:
+    - "gcp-module-project"
   events:
     activate:
