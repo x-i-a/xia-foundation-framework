@@ -34,6 +34,8 @@ locals {
         for env_name, env in local.environment_dict : {
           app_name         = app_name
           env_name         = env_name
+          repository_owner = app["repository_owner"]
+          repository_name  = app["repository_name"]
           match_branch     = env["match_branch"]
           match_event      = lookup(env, "match_event", "push")
         }
@@ -41,6 +43,8 @@ locals {
     ]) : "${pair.app_name}-${pair.env_name}" => {
       app_name         = pair.app_name
       env_name         = pair.env_name
+      repository_owner = pair.repository_owner
+      repository_name  = pair.repository_name
       match_branch     = pair.match_branch
       match_event      = pair.match_event
     }
