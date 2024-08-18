@@ -6,16 +6,21 @@ locals {
 }
 
 locals {
-  app_env_config = toset(flatten([
-    for app_name, app in local.applications : [
-      for env_name, env in local.environment_dict : {
-        app_name          = app_name
-        env_name          = env_name
-        repository_owner  = app["repository_owner"]
-        repository_name   = app["repository_name"]
-        match_branch      = env["match_branch"]
-        match_event       = lookup(env, "match_event", "push")
-      }
-    ]
-  ]))
+  app_env_config = {
+    for idx, pair in flatten([
+      for app_name, app in local.applications : [
+        for env_name, env in local.environment_dict : {
+          app_name         = app_name
+          env_name         = env_name
+          match_branch     = env["match_branch"]
+          match_event      = lookup(env, "match_event", "push")
+        }
+      ]
+    ]) : "${pair.app_name}-${pair.env_name}" => {
+      app_name         = pair.app_name
+      env_name         = pair.env_name
+      match_branch     = pair.match_branch
+      match_event      = pair.match_event
+    }
+  }
 }
