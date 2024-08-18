@@ -22,9 +22,8 @@ locals {
       } if length(lookup(v, "activate_scope", [])) > 0
     ])
   )
-
   _dependency_grouped = { for item in local._dependency_flat : item.module => item.apps... }
-
+  module_app_to_activate = { for k, v in local._dependency_grouped: k => tolist(toset(flatten(v)))}
 }
 
 locals {
