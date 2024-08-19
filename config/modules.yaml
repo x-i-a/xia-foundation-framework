@@ -21,6 +21,7 @@ gcp-module-pypi:
   class: PypiGcp
   depends_on:
     - gcp-module-project
+    - module-state-gcs
   activate_scope:
     - xia-framework
     - xia-module
@@ -37,6 +38,7 @@ gcp-module-dataset:
   class: Dataset
   depends_on:
     - gcp-module-project
+    - module-state-gcs
   activate_scope:
     - xia-demo-framework-01
   events:
@@ -46,5 +48,6 @@ gcp-module-table:
   class: Table
   depends_on:
     - gcp-module-project
+    - module-state-gcs
   events:
     activate:
