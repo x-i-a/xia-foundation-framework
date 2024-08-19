@@ -15,7 +15,7 @@ module-state-gcs:
   package: xia-module-terraform-gcs
   class: GcsState
   events:
-    activate:
+    deploy:
 gcp-module-pypi:
   package: xia-module-pypi
   class: PypiGcp
