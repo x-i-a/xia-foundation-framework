@@ -13,12 +13,3 @@ environments:
   prd:
     match_branch: refs/tags/.*
     match_event: release
-modules:
-  gcp-module-pypi:
-    repository_region: europe-west1
-    applications:
-      - xia-framework
-      - xia-module
-  gcp-module-dataset:
-    applications:
-      - xia-demo-framework-01
