@@ -3,7 +3,6 @@ settings:
   realm_name: protocol
   foundation_name: xia-framework
   foundation_region: eu
-  github_owner: x-i-a
 environments:
   dev:
     match_branch: refs/heads/main
