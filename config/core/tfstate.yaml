@@ -1,3 +1,2 @@
 backend: gcs
-project: xia-cosmos
 tf_bucket: xia-cosmos
