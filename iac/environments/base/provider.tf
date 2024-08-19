@@ -6,6 +6,10 @@ terraform {
   }
 }
 
+provider "github" {
+  owner = lookup(yamldecode(file(var.landscape_file))["settings"], "github_owner", null)
+}
+
 provider "google" {}
 
 provider "google-beta" {}
