@@ -41,7 +41,6 @@ def main():
         foundation.birth(foundation_name=args.foundation_name)
     if args.command == 'prepare':
         foundation.prepare()
-        foundation.enable_environments("prd")
         foundation.terraform_init("prd")
         foundation.terraform_apply("prd")
     elif args.command == 'init-module':
