@@ -29,3 +29,11 @@ jobs:
         project_id: ${{ vars.PROJECT_ID }}
         workload_identity_provider: ${{ vars.SECRET_WIP_NAME }}
         service_account: ${{ vars.PROVIDER_SA_EMAIL }}
+
+    - id: terraform-apply
+      name: Apply Terraform
+      uses: x-i-a/action-gcs-terraform-apply@main
+      with:
+        cosmos_name: ${{ vars.cosmos_name }}
+        realm_name: ${{ vars.realm_name }}
+        foundation_name: ${{ vars.foundation_name }}
