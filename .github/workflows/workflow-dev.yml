@@ -1,0 +1,31 @@
+name: Workflow - dev
+
+on:
+  push:
+    branches:
+    - main
+
+jobs:
+  deploy:
+    if: true
+    runs-on: ubuntu-latest
+    permissions:
+      contents: read
+      id-token: write
+    steps:
+    - id: checkout-code
+      uses: actions/checkout@v4
+
+    - id: prepare-modules
+      name: Prepare modules
+      run: |
+        pip install xia-framework xia-module
+        python -m xia_framework.foundation prepare
+
+    - id: auth-gcp-oidc
+      name: Authenticate to Google Cloud
+      uses: google-github-actions/auth@v2
+      with:
+        project_id: ${{ vars.PROJECT_ID }}
+        workload_identity_provider: ${{ vars.SECRET_WIP_NAME }}
+        service_account: ${{ vars.PROVIDER_SA_EMAIL }}
