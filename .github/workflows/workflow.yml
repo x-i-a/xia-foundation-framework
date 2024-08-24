@@ -30,6 +30,11 @@ jobs:
         workload_identity_provider: ${{ vars.SECRET_WIP_NAME }}
         service_account: ${{ vars.PROVIDER_SA_EMAIL }}
 
+    - id: auth-gcp-check
+      shell: bash
+      run: |
+        gcloud config list account
+
     - id: terraform-apply
       name: Apply Terraform
       uses: x-i-a/action-gcs-terraform-apply@main
