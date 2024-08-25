@@ -36,12 +36,6 @@ jobs:
       with:
           version: '>= 363.0.0'
 
-    - id: auth-gcp-check
-      shell: bash
-      run: |
-        gcloud auth login
-        gsutil ls gs://xia-cosmos/
-
     - id: terraform-apply
       name: Apply Terraform
       uses: x-i-a/action-gcs-terraform-apply@main
