@@ -22,6 +22,12 @@ xia-module-terraform-gcs:
   repository_name: xia-module-terraform-gcs
   template_owner: x-i-a
   template_name: xia-template-application
+xia-module-cosmos-gh-gcp:
+  visibility: public
+  repository_owner: x-i-a
+  repository_name: xia-module-cosmos-gh-gcp
+  template_owner: x-i-a
+  template_name: xia-template-application
 xia-module-gcp-project:
   visibility: public
   repository_owner: x-i-a
