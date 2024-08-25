@@ -33,11 +33,12 @@ jobs:
     - id: auth-gcp-cloud-sdk
       name: Set up Cloud SDK
       uses: google-github-actions/setup-gcloud@v2
+      with:
+          version: '>= 363.0.0'
 
     - id: auth-gcp-check
       shell: bash
       run: |
-        gcloud auth login
         gsutil ls gs://xia-cosmos/
 
     - id: terraform-apply
