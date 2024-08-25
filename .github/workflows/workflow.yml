@@ -38,6 +38,8 @@ jobs:
     - id: terraform-apply
       name: Apply Terraform
       uses: x-i-a/action-gcs-terraform-apply@main
+      env:
+        GITHUB_TOKEN: ${{ secrets.FOUNDATION_GITHUB_TOKEN }}
       with:
         cosmos_name: ${{ vars.COSMOS_NAME }}
         realm_name: ${{ vars.REALM_NAME }}
