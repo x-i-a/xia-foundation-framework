@@ -1,11 +1,3 @@
-terraform {
-  required_providers {
-    github = {
-      source  = "integrations/github"
-    }
-  }
-}
-
 locals {
   landscape = yamldecode(file(var.landscape_file))
   applications = yamldecode(file(var.applications_file))
