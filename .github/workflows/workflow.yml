@@ -30,16 +30,15 @@ jobs:
         workload_identity_provider: ${{ vars.SECRET_WIP_NAME }}
         service_account: ${{ vars.PROVIDER_SA_EMAIL }}
 
-    - id: auth-gcp-cloud-sdk
-      name: Set up Cloud SDK
-      uses: google-github-actions/setup-gcloud@v2
-      with:
-          version: '>= 363.0.0'
+    - id: auth-gcp-check
+      shell: bash
+      run: |
+        cat $GOOGLE_APPLICATION_CREDENTIALS
 
     - id: terraform-apply
       name: Apply Terraform
       uses: x-i-a/action-gcs-terraform-apply@main
       with:
-        cosmos_name: ${{ vars.cosmos_name }}
-        realm_name: ${{ vars.realm_name }}
-        foundation_name: ${{ vars.foundation_name }}
+        cosmos_name: ${{ vars.COSMOS_NAME }}
+        realm_name: ${{ vars.REALM_NAME }}
+        foundation_name: ${{ vars.FOUNDATION_NAME }}
