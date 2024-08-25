@@ -30,6 +30,10 @@ jobs:
         workload_identity_provider: ${{ vars.SECRET_WIP_NAME }}
         service_account: ${{ vars.PROVIDER_SA_EMAIL }}
 
+    - id: auth-gcp-cloud-sdk
+      name: Set up Cloud SDK
+      uses: google-github-actions/setup-gcloud@v2
+
     - id: auth-gcp-check
       shell: bash
       run: |
