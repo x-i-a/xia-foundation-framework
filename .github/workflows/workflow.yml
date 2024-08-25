@@ -33,7 +33,7 @@ jobs:
     - id: auth-gcp-check
       shell: bash
       run: |
-        gcloud config list account
+        cat $GOOGLE_APPLICATION_CREDENTIALS
 
     - id: terraform-apply
       name: Apply Terraform
