@@ -16,6 +16,11 @@ module-application-state-gcs:
   class: ApplicationGcsState
   events:
     deploy:
+module-application-backend-gcs:
+  package: xia-module-terraform-gcs
+  class: ApplicationGcsBackend
+  events:
+    deploy:
 gcp-module-pypi:
   package: xia-module-pypi
   class: PypiGcp
