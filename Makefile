@@ -8,27 +8,17 @@ init:
 	until [ -f .venv/bin/python3 ]; do sleep 1; done; \
 	until [ -f .venv/bin/activate ]; do sleep 1; done;
 	. .venv/bin/activate; \
-	pip install PyYAML xia-framework keyring setuptools wheel; \
+    pip install git+https://github.com/x-i-a/xia-framework.git; \
+	pip install PyYAML keyring setuptools wheel; \
     pip install keyrings.google-artifactregistry-auth; \
 
-bigbang: init
-	@if [ -z "$(realm_project)" ]; then \
-		echo "Realm project not specified. Usage: make bigbang realm_project=<realm_project>"; \
-	else \
-		python main.py bigbang -p $(realm_project); \
-	fi
-
-birth: init
-	@if [ -z "$(foundation_name)" ]; then \
-		echo "Foundation name not specified. Usage: make birth foundation_name=<foundation_name>"; \
-	else \
-	    . .venv/bin/activate; \
-		python main.py birth -n $(foundation_name); \
-	fi
+plan: init
+	@. .venv/bin/activate; \
+	python -m xia_framework.foundation plan
 
 apply: init
 	@. .venv/bin/activate; \
-	python main.py prepare
+	python -m xia_framework.foundation apply
 
 init-module: init
 	@if [ -z "$(module_class)" ] || [ -z "$(package)" ]; then \
