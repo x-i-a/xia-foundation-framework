@@ -3,27 +3,22 @@ xia-module:
   class: Module
 gh-module-application:
   package: xia-module-application-gh
-  class: Application
   events:
     deploy:
 gcp-module-project:
   package: xia-module-gcp-project
-  class: Project
   events:
     deploy:
 module-application-state-gcs:
   package: xia-module-terraform-gcs
-  class: ApplicationGcsState
   events:
     deploy:
 module-application-backend-gcs:
   package: xia-module-terraform-gcs
-  class: ApplicationGcsBackend
   events:
     deploy:
 gcp-module-pypi:
   package: xia-module-pypi
-  class: PypiGcp
   depends_on:
     - gcp-module-project
     - module-application-state-gcs
@@ -35,12 +30,10 @@ gcp-module-pypi:
   repository_region: europe-west1
 module-pypi:
   package: xia-module-pypi
-  class: Pypi
   events:
     activate:
 gcp-module-dataset:
   package: xia-module-gcp-bigquery
-  class: Dataset
   depends_on:
     - gcp-module-project
     - module-application-state-gcs
@@ -50,7 +43,6 @@ gcp-module-dataset:
     activate:
 gcp-module-table:
   package: xia-module-gcp-bigquery
-  class: Table
   depends_on:
     - gcp-module-project
     - module-application-state-gcs
