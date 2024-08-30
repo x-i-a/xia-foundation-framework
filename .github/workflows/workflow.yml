@@ -1,9 +1,9 @@
-name: Workflow - dev
+name: Workflow - base
 
 on:
   push:
     branches:
-    - main
+    - develop
 
 jobs:
   deploy:
