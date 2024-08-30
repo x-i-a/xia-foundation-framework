@@ -41,7 +41,7 @@ jobs:
       env:
         GITHUB_TOKEN: ${{ secrets.FOUNDATION_GITHUB_TOKEN }}
       with:
-        tf_bucket: ${{ vars.tf_bucket }}
+        tf_bucket_name: ${{ vars.tf_bucket_name }}
         cosmos_name: ${{ vars.COSMOS_NAME }}
         realm_name: ${{ vars.REALM_NAME }}
         foundation_name: ${{ vars.FOUNDATION_NAME }}
