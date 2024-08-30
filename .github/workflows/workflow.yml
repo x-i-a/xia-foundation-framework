@@ -3,7 +3,7 @@ name: Workflow - dev
 on:
   push:
     branches:
-    - develop
+    - main
 
 jobs:
   deploy:
@@ -20,7 +20,7 @@ jobs:
       name: Prepare modules
       run: |
         pip install xia-framework xia-module
-        python -m xia_framework.foundation prepare
+        python -m xia_framework.foundation plan
 
     - id: auth-gcp-oidc
       name: Authenticate to Google Cloud
@@ -41,6 +41,7 @@ jobs:
       env:
         GITHUB_TOKEN: ${{ secrets.FOUNDATION_GITHUB_TOKEN }}
       with:
+        tf_bucket: ${{ vars.tf_bucket }}
         cosmos_name: ${{ vars.COSMOS_NAME }}
         realm_name: ${{ vars.REALM_NAME }}
         foundation_name: ${{ vars.FOUNDATION_NAME }}
