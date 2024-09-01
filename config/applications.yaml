@@ -1,15 +1,5 @@
 xia-framework:
-  visibility: public
-  repository_owner: x-i-a
-  repository_name: xia-framework
-  template_owner: x-i-a
-  template_name: xia-template-application
 xia-module:
-  visibility: public
-  repository_owner: x-i-a
-  repository_name: xia-module
-  template_owner: x-i-a
-  template_name: xia-template-application
 xia-module-pypi:
   visibility: public
   repository_owner: x-i-a
