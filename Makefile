@@ -45,7 +45,7 @@ activate-module: init
 create-app: init
 	@. .venv/bin/activate; \
 	if [ -z "$(app_name)" ] ; then \
-		echo 'App Name not specified. Usage: make create-app app_name=<app_name> modules="<module1> <module2>"'; \
+		echo 'App Name not specified. Usage: make create-app app_name=<app_name> modules="<module1>,<module2>"'; \
 	else \
 		python -m xia_framework.foundation create-app -n $(app_name) -m $(modules); \
 	fi
