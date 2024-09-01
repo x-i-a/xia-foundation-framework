@@ -7,3 +7,4 @@ xia-module-application-gh:
 xia-module-gcp-bigquery:
 xia-demo-framework-01:
 action-gcs-terraform-apply:
+  template_name: xia-template-action
