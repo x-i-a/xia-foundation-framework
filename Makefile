@@ -1,5 +1,7 @@
 .PHONY: all init plan apply destroy init-module activate-module
 
+modules ?= ""
+
 all:
 	@echo "Specify a command to run"
 
@@ -38,4 +40,12 @@ activate-module: init
 		echo "Module URI not specified. Usage: make activate-module module_uri=<package_name>@<version>/<module_name>"; \
 	else \
 		python -m xia_framework.foundation activate-module -n $(module_uri); \
+	fi
+
+create-app: init
+	@. .venv/bin/activate; \
+	if [ -z "$(app_name)" ] ; then \
+		echo 'App Name not specified. Usage: make create-app app_name=<app_name> modules="<module1> <module2>"'; \
+	else \
+		python -m xia_framework.foundation create-app -n $(app_name) -m $(modules); \
 	fi
